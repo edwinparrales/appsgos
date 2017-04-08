@@ -1,0 +1,127 @@
+/* -- ENCABEZADO -- */
+
+.navbar-sb {
+	margin-bottom: 0;
+}
+
+.jumbotron-sb {
+	background:#222222;
+	color:#707070;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	border-bottom: solid;
+	border-bottom-color: #222222;
+	padding-left: 30px;
+}
+
+.jumbotron .titulo {
+	font-size:40px;
+	
+}
+
+.alineo {
+	margin-top: 15px;
+
+}
+
+.quitar_margen {
+	margin-bottom: 0;
+}
+
+.colorfond {
+	background:#F1F1F1;
+}
+
+.tamaño {
+	size: 2;
+}
+
+.alineo1 {
+	margin-right: 120px;
+}
+
+.alineo2 {
+	margin-left: 5px;
+}
+
+.alargaradmin{
+	padding-bottom: 538px;
+}
+
+.alargar {
+	padding-bottom: 258px;
+}
+
+.alargar2 {
+	padding-bottom: 266px;
+}
+
+.alargar3 {
+	padding-bottom: 267px;
+}
+
+.alargar4 {
+	padding-bottom: 351px;
+}
+
+.alargar5{
+	padding-bottom: 328px;
+}
+
+.alargar6{
+	padding-bottom: 294px;
+}
+
+.alargar7 {
+	padding-bottom: 256px;
+}
+
+.alargar8 {
+	padding-bottom: 350px;
+}
+
+.footer {
+	background:#222222;
+	color:#707070;
+	padding-top: 1px;
+	padding-bottom: 7px;
+
+}
+
+.margenfila {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.rellenoderecha {
+	padding-left: 0;
+	margin-left: 0;
+}
+
+.quitarmargenes {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.footer p {
+	
+}
+
+.margencolumna {
+	margin-top: 10px;
+}
+
+.panel-primary2 {
+  border-color: #222222;
+}
+.panel-primary2 > .panel-heading {
+  color: #707070;
+  background-color: #222222;
+  border-color: #222222;
+}
+
+.btn-secundary {
+  color: #707070;
+  background-color: #222222;
+  border-color: #222222;
+}
