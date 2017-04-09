@@ -411,7 +411,7 @@
                 $("#msj").html(respuesta);
                 $("#msj").css("background-color", "#D1A6AC");
 
-                if (respuesta == "Registro Guardado") {
+                if (respuesta === "Registro Guardado") {
                     jQuery.fn.reset = function () {
                         $(this).each(function () {
                             this.reset();
@@ -518,7 +518,7 @@
             type: "POST",
             data: $("#frmupdate").serialize(),
             success: function (respuesta) {
-                if(respuesta=="Registro Actualizado"){
+                if(respuesta==="Registro Actualizado"){
                     alert("El registro fue actualizado");
                     
                 }else{
@@ -558,7 +558,7 @@
                             type: "POST",
                             data: {id: vcodigo},
                             success: function (respuesta) {
-                                if (respuesta == "Registro Eliminado") {
+                                if (respuesta === "Registro Eliminado") {
                                     swal("El registro fue eliminado", "Aceptar", "success");
 
                                 }
@@ -591,7 +591,7 @@
 
         $(".js-example-basic-single").select2({
             id: function (data) {
-                return data.num_cedula
+                return data.num_cedula;
             },
             allowClear: true,
             placeholder: "Digite numero de cedula.",
@@ -627,7 +627,7 @@
 
         $("#xid_cliente").select2({
             id: function (data) {
-                return data.num_cedula
+                return data.num_cedula;
             },
             allowClear: true,
             placeholder: "Digite el codigo o el nombre del cliente.",
@@ -709,7 +709,7 @@
     
      $("#selectpro").select2({
             id: function (data) {
-                return data.num_cedula
+                return data.num_cedula;
             },
             allowClear: true,
             placeholder: "Digite numero de cedula o apellido.",
@@ -760,7 +760,7 @@
                 $("#msjx").html(respuesta);
                 $("#msjx").css("background-color", "#D1A6AC");
 
-                if (respuesta == "Registro Guardado") {
+                if (respuesta === "Registro Guardado") {
                     jQuery.fn.reset = function () {
                         $(this).each(function () {
                             this.reset();
@@ -797,7 +797,7 @@ event.preventDefault();
                 $("#msjp").html(respuesta);
                 $("#msjp").css("background-color", "#D1A6AC");
 
-                if (respuesta == "Registro Guardado") {
+                if (respuesta === "Registro Guardado") {
                     jQuery.fn.reset = function () {
                         $(this).each(function () {
                             this.reset();
@@ -823,7 +823,7 @@ event.preventDefault();
 
 
    function buscarOt(idot) {
-     if(!idot==""){
+     if(!idot===""){
         $("#example").dataTable().fnDestroy();
 
         $('#example').DataTable({
@@ -891,21 +891,6 @@ event.preventDefault();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 
 <script type="text/javascript">
@@ -922,18 +907,7 @@ event.preventDefault();
         allowClear: true,
         placeholder: "Seleccione prioridad",
         data: data
-    })
+    });
 
 </script>
 
-<!--<script src=" https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>-->
-<script src=" https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
-<script src=" //cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
-<script src=" //cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
-<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">-->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
-<!--<script src=" //code.jquery.com/jquery-1.12.4.js"></script>-->
