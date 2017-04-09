@@ -1,114 +1,101 @@
-<div class="container-fluid">
-    <section class="contenido">
+<div class="container">
+    <ul class="nav nav-tabs success">
+        <li class="active "><a id="tab-consultar" href="#tab1" data-toggle="tab"  style="color: #1B2631">Registrar Orden de Trabajo</a></li>
+        <li><a href="#tab2" data-toggle="tab" style="color: #1B2631">Consultar Orden de Trabajo</a></li>
 
-        <div class="row">
-            <ul class="nav nav-tabs success">
-                <li class="active "><a id="tab-consultar" href="#tab1" data-toggle="tab"  style="color: #1B2631">Registrar Orden de Trabajo</a></li>
-                <li><a href="#tab2" data-toggle="tab" style="color: #1B2631">Consultar Orden de Trabajo</a></li>
+    </ul>
 
-            </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
 
-            <div class="tab-content">
-                <div class="tab-pane active" id="tab1">
-                    <fieldset>
-                        <div class="row">
-                            <div class="col-lg-8 col-lg-offset-2">
-                                <div class="panel panel-info">
-                                    <div class="panel-heading"><h3 class="panel-title">Registro de orden de trabajo</h3></div>
-                                    <div class="panel-body" >
-                                        <h3 class="panel-title">Datos de la orden</h3><hr>
-                                        <form method="POST"  id="frmregistrar">
-                                            <div class="warning" id="msj" style=" font-weight:bold"></div>                   
+
+            <div class="col-lg-8 col-lg-offset-2">
+                <br>
+                <div class="panel panel-info">
+                    <div class="panel-heading"><h3 class="panel-title">Registro de orden de trabajo</h3></div>
+                    <div class="panel-body" >
+                        <h3 class="panel-title">Datos de la orden</h3><hr>
+                        <form method="POST"  id="frmregistrar">
+                            <div class="warning" id="msj" style=" font-weight:bold"></div>                   
 
 
 
-                                            <div class="form-group">
-                                                <label for="cliente">Cliente:</label>
-                                                <select class="js-example-basic-single form-control" name="id_cliente" id="id_cliente">
-                                                    <option></option>
-                                                </select>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Solicitud">Solicitud:</label>
-                                                <textarea class="form-control" id="solicitud" name="solicitud" placeholder="Solicitud"></textarea>                                   
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" value="<?php echo $this->session->userdata('usuario'); ?>" id="usuario" name="usuario" hidden="true">
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <button id="btnguardar" type="submit" class="btn btn-default btn-primary">Registrar</button>
-                                            </div>
-
-
-
-
-                                        </form>
-
-
-
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="cliente">Cliente:</label>
+                                <select class="js-example-basic-single form-control" name="id_cliente" id="id_cliente">
+                                    <option></option>
+                                </select>
 
                             </div>
-                    </fieldset>
+                            <div class="form-group">
+                                <label for="Solicitud">Solicitud:</label>
+                                <textarea class="form-control" id="solicitud" name="solicitud" placeholder="Solicitud"></textarea>                                   
+                            </div>
+                            <div class="form-group">
+                                <input type="text" value="<?php echo $this->session->userdata('usuario'); ?>" id="usuario" name="usuario" hidden="true">
+                            </div>
+
+
+                            <div class="form-group">
+                                <button id="btnguardar" type="submit" class="btn btn-default btn-primary">Registrar</button>
+                            </div>
 
 
 
-                </div>
 
+                        </form>
 
-                <div class="tab-pane " id="tab2">
-                    <br>
-                         <div class="form-group form-horizontal col-lg-4">
-                             <input required="true" class="form-control" name="txtbuscar" id="txtbuscar" placeholder="Ingrese numero de ot a buscar" type="number"><button id="btnbuscarzz" name="btnbuscarzz" class="btn btn-default">Buscar</button>
-                             <button id="btnreset" name="btnreset" class="btn btn-default">Reset</button>
-                        </div>
-                        <br>
-                    <div class="col-lg-12" id="datatable"><br>
-                   
-                        
-                        
-                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-
-                            <thead class="text-capitalize">
-                            <th>Codigo</th>
-                            <th>Fecha</th>
-                            <th>Informacion Cliente</th>
-                            <th>Solicitud</th>
-                            <th>Estado de la orden</th>
-                            <th>Fecha entrega</th>
-                            <th>Usuario</th>
-                            <th>Codigo Cliente</th>
-                            <th>Operaciones</th>
-
-                            </thead>
-                            <tfoot>
-                            <th>Codigo</th>
-                            <th>Fecha</th>
-                            <th>Cliente</th>
-                            <th>Solicitud</th>
-                            <th>Estado de la orden</th>
-                            <th>Fecha entrega</th>
-                            <th>Usuario</th>
-                            <th>Informacion Cliente</th>
-                            <th>Operaciones</th>
-
-                            </tfoot>
-
-
-                        </table>
 
 
                     </div>
-
                 </div>
 
             </div>
+        </div><!--final del tab1-->
 
-        </div>
+
+
+
+
+
+
+            <div class="tab-pane" id="tab2"><!-- Inicio del tab2-->
+                <br>
+                <div class="form-group form-horizontal col-lg-4">
+                    <input required="true" class="form-control" name="txtbuscar" id="txtbuscar" placeholder="Ingrese numero de ot a buscar" type="number"><button id="btnbuscarzz" name="btnbuscarzz" class="btn btn-default">Buscar</button>
+                    <button id="btnreset" name="btnreset" class="btn btn-default">Reset</button>
+                </div>
+                <br><br>
+                <div class="container" id="datatable">
+
+                    <table id="example" class="table table-bordered" cellspacing="0" width="100%">
+
+                        <thead class="text-capitalize">
+                        <th>Codigo   </th>
+                        <th>Fecha    </th>
+                        <th>Cliente  </th>
+                        <th>Solicitud    </th>
+                        <th>Estado orden   </th>
+                        <th>Fecha entrega   </th>
+                        <th>Usuario     </th>
+                        <th>Codigo Cliente    </th>
+                        <th>Operaciones      </th>
+
+
+                        </thead>
+
+
+                    </table>
+
+
+                </div>
+
+            </div><!--final del tab2-->
+
+
+
+        </div><!--final del tab-->
+    
 
         <!--            ventana modal editar orden de trabajo-->
 
@@ -130,6 +117,7 @@
                                 <form method="POST" action="" id="frmupdate">
 
                                     <div class="warning" id="msj" style=" font-weight:bold"></div> 
+
                                     <div class="form-group">
                                         <label>Codigo:</label>
                                         <input class="form-control" id="xcodigo" name="xcodigo" readonly="true">
@@ -246,7 +234,7 @@
                     </div>
                     <div class="modal-body">
                         <form id="frmagendapro">
-                             <div class="warning" id="msjp" style=" font-weight:bold"></div>
+                            <div class="warning" id="msjp" style=" font-weight:bold"></div>
                             <div class="form-group">
                                 <label> Codigo Orden de trabajo</label>
                                 <input id="pot" name="pot"class="form-control" type="text" placeholder="Orden de trabajo">
@@ -257,7 +245,7 @@
                                 <div>
                                     <select id="selectpro" class="select2-chosen" name="selectpro"></select>
                                 </div>
-                                
+
 
                             </div>
                             <div class="form-group">
@@ -265,7 +253,7 @@
                                 <textarea placeholder="Observaciones" class="form-control" name="observaciones" id="observaciones"></textarea>
 
                             </div>
-                             <div class="form-group">
+                            <div class="form-group">
                                 <label>Priorida</label>
                                 <div >
                                     <select name="selectprioridad" id="selectprioridad" class="select2-chosen"></select>
@@ -274,7 +262,7 @@
                             </div>
                             <div>
                                 <button id="btnrprof" class="btn btn-info">Guardar</button>
-                                        
+
                             </div>
 
 
@@ -287,9 +275,9 @@
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>  
 </div>
+
 
 <script type="text/javascript">
 
@@ -359,6 +347,7 @@
 
 
         $("body").on("click", "#tab-consultar", function () {
+            mostrardatos();
             $("#msj").html(" ");
 
             $("#msj").css("background-color", false);
@@ -429,28 +418,16 @@
 
     function mostrardatos() {
         $("#example").dataTable().fnDestroy();
-        
-           // Setup - add a text input to each footer cell
-//    $('#example tfoot th').each( function () {
-//        var title = $(this).text();
-//        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-//    } );
-    
-   
-   
-
         $('#example').DataTable({
 //             fixedColumns: true,
 //             fixedHeader: true,
-             dom: 'Bfrtip',
-             buttons: [
-             'csv', 'excel', 'pdf', 'print'
-             ],
+            // dom: 'Bfrtip',
+            // buttons: ['csv', 'excel', 'pdf', 'print'],
               "scrollY":        "300px",
               "scrollCollapse": true,
               "paging":         false,
   
-            "scrollX": true,
+              "scrollX": true,
    
             "ajax": '<?php echo base_url('cot/listar') ?>',
             "columns": [
@@ -844,12 +821,10 @@ event.preventDefault();
                 {"data": "id_cliente"},
                 {"defaultContent": "<button  type=\"submit\" id=\"btneditar\" class=\"btn btn-success\"  data-toggle=\"modal\" data-target=\"#modalupdate\"><span class=\"glyphicon glyphicon-edit\"></span>E</button><button class='btn btn-danger' id=\"btneliminar\" type='button'><span class=\"glyphicon glyphicon-trash \"></span>X</button>\n\
                  <button  type=\"submit\" id=\"btnequipos\" class=\"btn btn-default\"  data-toggle=\"modal\" data-target=\"#modalequipo\"><span class=\"glyphicon glyphicon-plus\"></span>C</button>\n\
-                 <button  type=\"submit\" id=\"btnprofesional\" class=\"btn btn-info\"  data-toggle=\"modal\" data-target=\"#modalprof\"><span class=\"glyphicon glyphicon-user\"></span>P</button>"
-
-
-
-
-                }
+                 <button  type=\"submit\" id=\"btnprofesional\" class=\"btn btn-info\"  data-toggle=\"modal\" data-target=\"#modalprof\"><span class=\"glyphicon glyphicon-user\"></span>P</button>"}
+                 
+     
+                
 
 
             ]
@@ -903,15 +878,4 @@ event.preventDefault();
 </script>
 
 
-<!--<script src=" https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>-->
-<script src=" https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
-<script src=" //cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
-<script src=" //cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
-<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">-->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
-<!--<script src=" //code.jquery.com/jquery-1.12.4.js"></script>-->
 

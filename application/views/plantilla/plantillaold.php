@@ -6,7 +6,8 @@
      <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sgos</title><link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <title>Sgos</title>
+ 
   
         <script src="<?php echo base_url('public/js/jquery.min.js') ?> "></script>
         <?php echo link_tag(base_url() . 'public/css/bootstrap.css'); ?> 
@@ -25,8 +26,6 @@
         <script src="<?php echo base_url('public/media/js/jquery.dataTables.js') ?> "></script>
         
         <script src="<?php echo base_url('public/media/js/dataTables.bootstrap.min.js') ?> "></script>
-        <?php echo link_tag('https://cdn.datatables.net/fixedcolumns/3.2.2/css/fixedColumns.dataTables.min.css'); ?> 
-        <script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
          
          <!--Select2-->
          <?php echo link_tag(base_url() . 'public/select2/css/select2-bootstrap.css'); ?> 
@@ -53,7 +52,7 @@
         <!-- CUSTOM STYLES-->
     <link href="<?php echo base_url().'public/plantilla/css/custom.css'?>" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   
 </head>
 <body>
      

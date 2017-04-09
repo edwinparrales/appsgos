@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Aplicacion web para el control de ordenes de trabajo dentro de la empresa soluciones E&S 
+proyecto de grado para la UNIAJC
+Edwin Parrales, Jefferson Alvarez, Jhom Payan 
 -->
 <html>
     <head>
@@ -10,9 +10,7 @@ and open the template in the editor.
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sgos</title><link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-
-        
+      
         <script src="<?php echo base_url('public/js/jquery.min.js') ?> "></script>
         <?php echo link_tag(base_url() . 'public/css/bootstrap.css'); ?> 
         <script src="<?php echo base_url('public/js/bootstrap.min.js') ?> "></script>
@@ -20,11 +18,7 @@ and open the template in the editor.
          <script src="<?php echo base_url('public/dist/sweetalert.min.js'); ?>"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/dist/sweetalert.css'); ?>">
         <script src="<?php echo base_url('public/dist/funciones.js'); ?>"></script>
-        
-        
-     
-        
-        
+   
         <!--data tables-->
         
         <?php echo link_tag(base_url() . 'public/media/css/dataTables.bootstrap.css'); ?> 
@@ -32,9 +26,7 @@ and open the template in the editor.
         <script src="<?php echo base_url('public/media/js/jquery.dataTables.js') ?> "></script>
         
         <script src="<?php echo base_url('public/media/js/dataTables.bootstrap.min.js') ?> "></script>
-        <?php echo link_tag('https://cdn.datatables.net/fixedcolumns/3.2.2/css/fixedColumns.dataTables.min.css'); ?> 
-        <script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
-         
+       
          <!--Select2-->
          <?php echo link_tag(base_url() . 'public/select2/css/select2-bootstrap.css'); ?> 
          <?php echo link_tag(base_url() . 'public/select2/css/select2.css'); ?> 
