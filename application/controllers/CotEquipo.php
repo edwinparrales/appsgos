@@ -33,19 +33,22 @@ class CotEquipo extends CI_Controller {
     }
 
  public function guardar() {
+     
+   
+     
 
         if ($this->input->is_ajax_request()) {
 
             $this->form_validation->set_rules('eq', 'Codigo Equipo', 'required');
             $this->form_validation->set_rules('ot', 'Codigo Orden trabajo', 'required');
             $this->form_validation->set_rules('obser', 'Observaciones', 'required');
-            
-            
-            
-            //mensajes de validacion
-             $this->form_validation->set_message('is_unique', 'El nombre de %s ya existe en la base de datos');
 
-       
+
+
+            //mensajes de validacion
+            $this->form_validation->set_message('is_unique', 'El nombre de %s ya existe en la base de datos');
+
+
 
             if ($this->form_validation->run() == false) {
                 $error = json_encode(validation_errors());
@@ -56,16 +59,34 @@ class CotEquipo extends CI_Controller {
 
 
                 $obj = $this->input->post();
-       
-                $datos = array(
-                    "id_equipo" => $obj['eq'],
-                    "id_ot" =>intval(preg_replace('/[^0-9]+/', '', $obj['ot']), 10) ,
-                    "observaciones" => $obj['obser']     
-                );
-                if ($this->Model_OtEquipoCliente->guardar($datos) == true) {
-                    echo "Registro Guardado";
+                
+                     //metodo para validar el estado de la ot
+                $fila = $this->Model_OtEquipoCliente->selectOt($obj['ot']);
+
+                     foreach ($fila as $value) {
+
+                       $result[]=$value->estado_proce;
+                      }
+                
+                
+                
+                
+                
+
+                //validacion estado de la orden debe ser diferente a finalizado     
+                if ($result[0] != "FINALIZADO" && $result[0] != null) {
+                    $datos = array(
+                        "id_equipo" => $obj['eq'],
+                        "id_ot" => intval(preg_replace('/[^0-9]+/', '', $obj['ot']), 10),
+                        "observaciones" => $obj['obser']
+                    );
+                    if ($this->Model_OtEquipoCliente->guardar($datos) == true) {
+                        echo "Registro Guardado";
+                    } else {
+                        echo "El registro no fue guardado";
+                    }
                 } else {
-                    echo "El registro no fue guardado";
+                    echo "La orden no puede estar en estado FINALIZADO modifique su estado";
                 }
             }
         } else {

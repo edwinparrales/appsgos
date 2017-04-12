@@ -53,6 +53,19 @@ class Model_OtEquipoCliente extends CI_Model {
         return $json;
     }
     
+    //metodo para obtener los datos de las ot segun el id
+    
+    function selectOt($id_ot) {
+        if($id_ot!=null){
+             $query=$this->db->query(" call sp001_cursorot($id_ot)");
+             
+             return $query->result();
+            
+        }
+        
+        
+    }
+    
     
 
 }

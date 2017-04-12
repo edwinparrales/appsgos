@@ -9,7 +9,7 @@ class Cagenda extends CI_Controller {
         $this->load->helper('url');
 
         $this->load->model('Model_Agenda');
-
+       
         if (!$this->session->userdata('conectado')) {
             redirect(base_url());
         }
@@ -64,6 +64,22 @@ class Cagenda extends CI_Controller {
                     "estado_act"=>"ABIERTO",
                     "prioridad"=>$obj['selectprioridad']
                 );
+              
+                
+                    //metodo para validar el estado de la ot nota : se reutila el metodo del ot-equipos
+                       $this->load->model("Model_OtEquipoCliente");
+
+                     $fila = $this->Model_OtEquipoCliente->selectOt($obj['pot']);
+
+                     foreach ($fila as $value) {
+
+                       $result[]=$value->estado_proce;
+                      }
+                
+                
+                
+                if($result[0]!="FINALIZADO"){
+                
                 if ($this->Model_Agenda->guardar($datos) == true) {
                      $this->load->model('Model_Ot');
                      $dat=array(
@@ -75,6 +91,12 @@ class Cagenda extends CI_Controller {
                 } else {
                     echo "El registro no fue guardado";
                 }
+                }else{
+                    echo "La orden no puede estar en estado FINALIZADO modifique su estado";
+                    
+                }
+                
+                
             }
         } else {
 

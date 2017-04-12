@@ -392,7 +392,7 @@
 </script>
 
 <script type="text/javascript">
-    var data = [{id: 'CEDULA', text: 'Cedula'}, {id: 'TI', text: 'Tarjeta de identidad'}, {id: 'RUT', text: 'Registro unico tributario(Rut)'}];
+    var data = [{id: 'CEDULA', text: 'Cedula'}, {id: 'TI', text: 'Tarjeta de identidad'},{id: 'RUT', text: 'Numero de identificacion tributaria(Nit)'}, {id: 'RUT', text: 'Registro unico tributario(Rut)'},{id: 'GEN', text: 'Otro(Generico)'}];
 
     $("#tdocumento").select2({
         allowClear: true,

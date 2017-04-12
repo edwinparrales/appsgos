@@ -61,6 +61,14 @@
 
 
                 <div class="tab-pane " id="tab2">
+                    <br>
+                    <div class="form-group form-horizontal col-lg-4">
+                        <input required="true" class="form-control" name="txtbuscar" id="txtbuscar" placeholder="Ingrese numero de ot a buscar" type="number"><button id="btnbuscarzz" name="btnbuscarzz" class="btn btn-default">Buscar</button>
+                        <button id="btnreset" name="btnreset" class="btn btn-default">Reset</button>
+                    </div>
+                    <br>
+                    
+                    
 
                     <div class="col-lg-12" id="listar"><br>
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">

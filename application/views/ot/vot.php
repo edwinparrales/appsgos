@@ -190,7 +190,8 @@
                         </div>
 
                         <form class="" id="frmmodaleqcliente">
-                            <div class="warning" id="msjx" style=" font-weight:bold"></div> 
+                            <div class="warning" id="msjx" style=" font-weight:bold"></div>
+                            <input  id="estadoOt" name="estadoOt" type="hidden">
 
                             <div class="form-group">
                                 <label> Codigo Equipo Cliente</label>
@@ -234,6 +235,7 @@
                     </div>
                     <div class="modal-body">
                         <form id="frmagendapro">
+                            <input  id="estadoOtp" name="estadoOtp" type="hidden">
                             <div class="warning" id="msjp" style=" font-weight:bold"></div>
                             <div class="form-group">
                                 <label> Codigo Orden de trabajo</label>
@@ -243,7 +245,7 @@
                             <div class="form-group">
                                 <label> Profesional</label>
                                 <div>
-                                    <select id="selectpro" class="select2-chosen" name="selectpro"></select>
+                                    <select id="selectpro" class="form-control" name="selectpro"></select>
                                 </div>
 
 
@@ -256,7 +258,7 @@
                             <div class="form-group">
                                 <label>Priorida</label>
                                 <div >
-                                    <select name="selectprioridad" id="selectprioridad" class="select2-chosen"></select>
+                                    <select name="selectprioridad" id="selectprioridad" class="form-control"></select>
                                 </div>
 
                             </div>
@@ -294,8 +296,6 @@
         });
 
 
-
-
         $("#btnguardar").click(guardar);
 
         $("#btnupdate").click(actualizar);
@@ -330,15 +330,21 @@
             eliminar(vcodigo);
 
         });
+        //Metodo para relacionar equipos con ordenes de trabajo
         $("body").on("click", "#datatable #btnequipos", function () {
             vcodigo = $(this).parent().parent().children("td:eq(0)").text();
             $("#ot").val(vcodigo);
             $("#infocliente").val($(this).parent().parent().children("td:eq(2)").text());
+            $("#estadoOt").val($(this).parent().parent().children("td:eq(4)").text());
             selectEq($(this).parent().parent().children("td:eq(7)").text());
 
         });
-               $("body").on("click", "#datatable #btnprofesional", function () {
+        
+           //metodo para relacionar especialistas con ordenes de trabajo
+        
+            $("body").on("click", "#datatable #btnprofesional", function () {
             vcodigo = $(this).parent().parent().children("td:eq(0)").text();
+            $("#estadoOtp").val($(this).parent().parent().children("td:eq(4)").text());
             $("#pot").val(vcodigo);
             
 

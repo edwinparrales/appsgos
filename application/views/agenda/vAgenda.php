@@ -1,8 +1,24 @@
 <div class="container-fluid">
     <section class="contenido">
-        <button class="btn btn-primary"  data-toggle="modal" data-target="#modalregistro"><span class="glyphicon glyphicon-plus"></span>Agendar</button>
-        <div class="col-lg-12 col-lg-offset-0" id="regagenda"><br>
+        
+        <div class="row">
+            <div class="col-lg-3">
+                <button class="btn btn-primary col-lg-6"  data-toggle="modal" data-target="#modalregistro"><span class="glyphicon glyphicon-plus"></span>Agendar</button>
+            </div>
+            <br>
+            <div class="form-group form-horizontal col-lg-4 col-lg-offset-2 ">
+                <input required="true" class="form-control" name="txtbuscar" id="txtbuscar" placeholder="Ingrese numero de ot a buscar" type="number"><button id="btnbuscarzz" name="btnbuscarzz" class="btn btn-default">Buscar</button>
+                <button id="btnreset" name="btnreset" class="btn btn-default">Reset</button>
+            </div>
+            <br>
+        </div>
+             
 
+       
+          
+
+        <div class="col-lg-12 col-lg-offset-0" id="regagenda"><br>
+              
             <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
 
                 <thead class="text-capitalize">
