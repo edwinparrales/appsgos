@@ -184,5 +184,26 @@ class CotEquipo extends CI_Controller {
         $json = $this->Model_EquipoCliente->cmbEqOt($idot, $q);
         echo json_encode($json);
     }
+    
+    
+    //Metodo para listar relacin equipos ot segun el numero de ot
+          
+    function listarOtEquipo($idot) {
+          if ($this->Model_OtEquipoCliente->listarOtEquipo2($idot) == true) {
+            $fila = $this->Model_OtEquipoCliente->listarOtEquipo2($idot);
+
+            foreach ($fila as $value) {
+
+                $json['data'][] = $value;
+            }
+
+
+            echo json_encode($json);
+        } else {
+            echo 'La busqueda no tiene resultados verifique los datos';
+        }
+        
+        
+    }
 
 }

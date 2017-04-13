@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <section class="contenido">
-        
+
         <div class="row">
             <div class="col-lg-3">
                 <button class="btn btn-primary col-lg-6"  data-toggle="modal" data-target="#modalregistro"><span class="glyphicon glyphicon-plus"></span>Agendar</button>
@@ -12,13 +12,13 @@
             </div>
             <br>
         </div>
-             
 
-       
-          
+
+
+
 
         <div class="col-lg-12 col-lg-offset-0" id="regagenda"><br>
-              
+
             <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
 
                 <thead class="text-capitalize">
@@ -104,17 +104,8 @@
                                         
                             </div>
 
-
-
                         </form>
-                        
-                        
-                        
-                        
-                        
-                        
-                       
-                    </form>
+                   </form>
 
                 </div>
 
@@ -187,13 +178,6 @@
 
                         </div>
 
-
-
-
-
-
-                       
-
                     </form>
 
                 </div>
@@ -252,13 +236,25 @@
             eliminar(vcodigo);
 
         });
+        
+       //metodo para realizar busquedas por numero de orden***************************
+        
+          $("body").on("click", "#btnbuscarzz", function () {
+           idot=document.getElementById("txtbuscar").value;
+             buscarOt(idot);
+
+        });
+        
+           $("body").on("click", "#btnreset", function () {
+             $("#example").dataTable().fnDestroy();
+             $("#txtbuscar").val("");
+              mostrardatos();
+
+        });
+        
+        //****************************************************************************
       
     });
-
-
-
-
-
 
 
 
@@ -516,29 +512,7 @@
         });
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
     
     
     //modal para relacionar orden  de trabajo con profesional
@@ -574,8 +548,40 @@ event.preventDefault();
 
         mostrardatos();
 }
+
+
+//Metodo para listar segun el numero de ot
+ function buscarOt(idot) {
+     if(!idot==""){
+           $("#example").dataTable().fnDestroy();
+            $('#example').DataTable({
+  
+            "ajax": '<?php echo base_url('Cagenda/listarAgendaOt/') ?>'+idot,
+    
+            "columns": [
+                {"data": "cons"},
+                {"data": "fecha_reg"},
+                {"data": "id_ot"},
+                {"data": "id_pro"},
+                {"data": "observaciones"},
+                {"data": "estado_act"},
+                {"data": "prioridad"},
+                {"data": "OT"},
+                {"data": "PROFESIONAL"},
+                {"data": "CLIENTE"},
+                {"defaultContent": "<a  id=\"xxx\" class=\"btn btn-success\"  data-toggle=\"modal\" data-target=\"#frmupdateEmple\"><span class=\"glyphicon glyphicon-pencil\"></span>E</a> <button class='btn btn-danger' id=\"btneliminar\" type='button'><span class=\"glyphicon glyphicon-trash \"></span>X</button>"
+                }
+
+            ],
+             "scrollX": true
+             });
+          }else{
+                 alert(" El campo numero de orden no puede estar vacio ");
+               }
+
     
     
+ }
 
 </script>
 <script type="text/javascript">

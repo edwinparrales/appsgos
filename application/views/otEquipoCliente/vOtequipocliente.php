@@ -178,11 +178,6 @@
 
 
 
-
-
-
-
-
 </div>
 
 <script type="text/javascript">
@@ -218,6 +213,31 @@
             $("#xcodigo").val(" ");
             $("#xmarca").val(" ");
         });
+        
+          //metodo para realizar busquedas por numero de orden***************************
+        
+          $("body").on("click", "#btnbuscarzz", function () {
+           idot=document.getElementById("txtbuscar").value;
+             buscarOt(idot);
+
+        });
+        
+           $("body").on("click", "#btnreset", function () {
+             $("#example").dataTable().fnDestroy();
+             $("#txtbuscar").val("");
+              mostrardatos();
+
+        });
+        
+        //****************************************************************************
+        
+        
+        
+        
+        
+        
+        
+        
 
 
     });
@@ -614,26 +634,33 @@ function guardar() {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+function buscarOt(idot) {
+     if(!idot==""){
+        $("#example").dataTable().fnDestroy();
+        $('#example').DataTable({
+                                        
+            "ajax": '<?php echo base_url('CotEquipo/listarOtEquipo/')?>'+idot,
+            "columns": [
+                {"data": "cons"},
+                {"data": "id_equipo"},
+                {"data": "id_ot"},
+                {"data": "Observaciones"},
+                {"data": "EQUIPOS"},
+                {"data": "OT"},
+                {"defaultContent": "<button  type=\"submit\" id=\"btneditar\" class=\"btn btn-success \"  data-toggle=\"modal\" data-target=\"#frmupdate\"><span class=\"glyphicon glyphicon-pencil\"></span>E</button> <button class='btn btn-danger' id=\"btneliminar\" type='button'><span class=\"glyphicon glyphicon-trash \"></span>X</button>"
+                }
 
+
+            ]
+
+        });
+    
+        
+          }else{
+                 alert(" El campo numero de orden no puede estar vacio ");
+               }
+
+    }
 
 
 </script>

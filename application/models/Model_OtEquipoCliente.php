@@ -67,5 +67,14 @@ class Model_OtEquipoCliente extends CI_Model {
     }
     
     
+        
+    //Listar relacion equipos ot segun el numero de la ot
+    function listarOtEquipo2($idot) {
+     $query = $this->db->query(" select * from vOtEquipoCliente where id_ot=$idot");
+        return $query->result();
+        
+    }
+    
+    
 
 }

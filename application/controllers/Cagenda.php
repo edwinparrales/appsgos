@@ -176,5 +176,24 @@ class Cagenda extends CI_Controller {
         }
         
     }
+    
+    //Metodo para listar agenda segun el numero de ot
+
+    public function listarAgendaOt($idot) {
+
+        if ($this->Model_Agenda->listAgendaOt($idot) == true) {
+            $fila = $this->Model_Agenda->listAgendaOt($idot);
+
+            foreach ($fila as $value) {
+
+                $json['data'][] = $value;
+            }
+
+
+            echo json_encode($json);
+        } else {
+            echo 'La busqueda no tiene resultados verifique los datos';
+        }
+    }
 
 }

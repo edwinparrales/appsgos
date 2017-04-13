@@ -57,5 +57,12 @@ class Model_Agenda extends CI_Model {
         $json = $query->result();
         return $json;
     }
+    
+    //Metodo para listar la agenda segun el numero de ot
+      function listAgendaOt($id_ot){
+              $query = $this->db->query(" select * from vagenda where id_ot=$id_ot");
+        return $query->result();
+          
+      }
 
 }
