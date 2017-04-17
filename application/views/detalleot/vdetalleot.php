@@ -10,6 +10,18 @@
 
             <div class="tab-content" id="tabs">
                 <div class="tab-pane active" id="tab1">
+                    <br>
+                    <div class="row">
+                        <div class="  col-lg-4 col-lg-offset-2 form-horizontal">
+                            <div class="form-group">
+                                <input min="0" required="true" class="form-inline  col-lg-4 col-lg-offset-1" name="txtbuscar" id="txtbuscar" placeholder="Ingrese No OT" type="number" style="background: lemonchiffon">
+                                <button id="btnbuscarzz" name="btnbuscarzz" class=" form-inline btn  btn-sm  col-lg-offset-1">Buscar</button>
+                                <button id="btnreset" name="btnreset" class=" form-inline col-lg-offset-1 btn btn-sm">Reset</button>
+
+                            </div>
+
+                        </div> 
+                    </div>
 
                     <div class="col-lg-12" id="listaAgenda"><br>
                         <table id="tablaAgenda" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -52,9 +64,22 @@
 
 
                 <div class="tab-pane " id="tab2">
-<!--                    <input type="text" id="ot" placeholder="ingresa codigo ot" name="ot">
-                    <button id="filtrar">Filtrar</button>
-                    <button id="reset">Reset</button>-->
+                    <br>
+                    <div class="row">
+                        <div class="  col-lg-4 col-lg-offset-2 form-horizontal">
+                            <div class="form-group">
+                                <input required="true" class="form-inline  col-lg-6 col-lg-offset-1" name="txtbuscar2" id="txtbuscar2" placeholder="Ingrese No OT" type="number"   min="0" style="background: #F0F5FF">
+                                <button id="btnbuscarzz2" name="btnbuscarzz2" class=" form-inline btn  btn-sm  col-lg-offset-1">Buscar</button>
+                                <button id="btnreset2" name="btnreset2" class=" form-inline col-lg-offset-1 btn btn-sm">Reset</button>
+
+                            </div>
+
+                        </div> 
+                    </div><br>
+                    
+                    
+                    
+>
                     <div class="row">
                         
 <!--                        TABLA DEL DETALLA DE LA ORDEN DE SERVICIO-->
@@ -536,6 +561,44 @@
            
         });
         
+        
+             //metodo para realizar busquedas por numero de orden***************************
+        
+          $("body").on("click", "#btnbuscarzz", function () {
+           idot=document.getElementById("txtbuscar").value;
+             buscarOt(idot);
+
+        });
+        
+           $("body").on("click", "#btnreset", function () {
+             $("#example").dataTable().fnDestroy();
+             $("#txtbuscar").val("");
+              mostrardatos();
+
+        });
+        
+        //****************************************************************************
+        
+        
+                   //metodo para realizar busquedas por numero de orden 2 Detalle ot***************************
+        
+          $("body").on("click", "#btnbuscarzz2", function () {
+           idot=document.getElementById("txtbuscar2").value;
+             buscarOt2(idot);
+
+        });
+        
+           $("body").on("click", "#btnreset2", function () {
+             $("#tbDetalleOt").dataTable().fnDestroy();
+             $("#txtbuscar2").val("");
+              mostrardatosDteOt();
+
+        });
+        
+        //****************************************************************************
+        
+        
+        
       
     });
     
@@ -1015,6 +1078,98 @@ function mostrardatosDteOt() {
 //   });
 //   
 //   
+   
+   function buscarOt(idot) {
+    $("#tablaAgenda").dataTable().fnDestroy();
+    $('#tablaAgenda').DataTable({
+        "ajax": "http://localhost/demosots/Cdetalleot/listar/"+idot,
+        "columns": [
+            {"data": "cons"},
+            {"data": "fecha_reg"},
+            {"data": "id_ot"},
+            {"data": "id_pro"},
+            {"data": "observaciones"},
+            {"data": "estado_act"},
+            {"data": "prioridad"},
+            {"data": "OT"},
+            {"data": "EQUIPO"},
+            {"data": "ESPECIALISTA"},
+            {"defaultContent": "<a  data-target=\"#modal_detalleot\" data-toggle=\"modal\"class='btn btn-info' id=\"btnreporte\" type='button'><span class=\"glyphicon glyphicon-list-alt \"></span>Solucionar</a>"
+            }
+
+
+        ]
+
+    });
+
+
+
+}
+   
+   
+   
+   //Metodo para realizar busquedas en la tabla de detalle ot
+   function buscarOt2(idot) {
+    $("#tbDetalleOt").dataTable().fnDestroy();
+    $('#tbDetalleOt').DataTable({
+         "scrollX": true,
+         "scrollY":"300px",
+        "scrollCollapse": true,
+        "paging":         false,
+        "ajax": "http://localhost/demosots/Cdetalleot/listarDetalleOt/"+idot,
+        "columns": [
+            {"data": "cons"},
+            {"data": "id_ot"},
+            {"data": "id_ser"},
+            {"data": "observaciones"},
+            {"data": "id_dispo"},
+            {"data": "modelo"},
+            {"data": "id_marca"},
+            {"data": "seriales"},
+            {"data": "capacidad"},
+            {"data": "valor_dispositivo"},
+            {"data": "id_proveedor"},
+            {"data": "num_factura"},
+            {"data": "equipo_cliente"},
+            {"data": "proveedor"},
+            {"data": "dispositivo"},
+            {"data": "marca"},
+            {"data": "servicios"},
+            {"data": "OT"},
+            {"data": "SUM"},
+            {"defaultContent": "<button  type=\"submit\" id=\"btneditar\" class=\"btn btn-success editar\"  data-toggle=\"modal\" data-target=\"#modal_Actdetalleot\"><span class=\"glyphicon glyphicon-pencil\"></span>E</button> <button class='btn btn-danger' id=\"btneliminar\" type='button'><span class=\"glyphicon glyphicon-trash \"></span>X</button>"
+            }
+        ]
+
+    });
+
+
+}
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
    
    

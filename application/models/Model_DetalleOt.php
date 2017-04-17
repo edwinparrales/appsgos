@@ -9,18 +9,30 @@ class Model_DetalleOt extends CI_Model {
 
 //    lista todas las ordenes agendadas metodos para el administrado
 //    
-    public function listar() {
-        $query = $this->db->query(" select * from vagendaprofesional ");
-        return $query->result();
+    public function listar($idot) {
+          if ($idot == null) {
+            $query = $this->db->query(" select * from vagendaprofesional ");
+            return $query->result();
+        }else{
+        
+          $query = $this->db->query(" select * from vagendaprofesional where id_ot=$idot ");
+            return $query->result();
+        }
+        
     }
 
-    public function listarDetalleOt() {
+    public function listarDetalleOt($idot) {
+        if($idot==null){
         $query = $this->db->query(" select * from vdetalleot ");
         return $query->result();
+        }else{
+            $query = $this->db->query(" select * from vdetalleot where id_ot=$idot");
+            return $query->result();
+        }
     }
 
     //listar la agenda segun el usuario logeado
-    public function listarLogin($p_login) {
+    public function listarLogin($p_login,$idot) {
         $this->db->select('vlogin.*');
         $this->db->from('vlogin');
         $this->db->where('login', $p_login);
@@ -29,11 +41,16 @@ class Model_DetalleOt extends CI_Model {
         $id = $query->row_array();
 
         $id_profesional = $id['id_pro'];
-        $query = $this->db->query(" select * from vagendaprofesional where vagendaprofesional.id_pro=$id_profesional");
-        return $query->result();
+        if ($idot = null) {
+            $query = $this->db->query(" select * from vagendaprofesional where vagendaprofesional.id_pro=$id_profesional");
+            return $query->result();
+        } elseif ($idot != null) {
+            $query = $this->db->query(" select * from vagendaprofesional where vagendaprofesional.id_pro=$id_profesional and id_ot=$idot");
+            return $query->result();
+        }
     }
 
-    public function listarDetalleOtLogin($p_login) {
+    public function listarDetalleOtLogin($p_login,$idot) {
         $this->db->select('vlogin.*');
         $this->db->from('vlogin');
         $this->db->where('login', $p_login);
@@ -42,10 +59,16 @@ class Model_DetalleOt extends CI_Model {
         $id = $query->row_array();
 
         $id_profesional = $id['id_pro'];
-
-        $query = $this->db->query("SELECT vdetalleot.* FROM  vdetalleot 
+        if ($idot == null) {
+            $query = $this->db->query("SELECT vdetalleot.* FROM  vdetalleot 
         INNER JOIN agenda ON vdetalleot.id_ot = agenda.id_ot
         WHERE agenda.id_pro=$id_profesional");
+        } elseif ($idot != null) {
+            $query = $this->db->query("SELECT vdetalleot.* FROM  vdetalleot 
+        INNER JOIN agenda ON vdetalleot.id_ot = agenda.id_ot
+        WHERE agenda.id_pro=$id_profesional and vdetalleot.id_ot=$idot");
+        }
+
         return $query->result();
         
     }
@@ -90,5 +113,7 @@ class Model_DetalleOt extends CI_Model {
         $json = $query->result();
         return $json;
     }
+    
+    
 
 }

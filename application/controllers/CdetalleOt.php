@@ -126,13 +126,13 @@ class CdetalleOt extends CI_Controller {
     
     
 //    metodo que muestra la agenda segun el usuario logeado
-    public function listar() {
+    public function listar($idot=null) {
         $perfil=$this->session->userdata('perfil');
         $v_login=$this->session->userdata('usuario');
 //         
 //
         if ($perfil == "ADMINISTRADOR") {
-            $fila = $this->Model_DetalleOt->listar();
+            $fila = $this->Model_DetalleOt->listar($idot);
           
             foreach ($fila as $value) {
 
@@ -146,7 +146,7 @@ class CdetalleOt extends CI_Controller {
 //         
          if ($perfil=="TECNICO") {
 //           
-            $fila = $this->Model_DetalleOt->listarLogin($v_login);
+            $fila = $this->Model_DetalleOt->listarLogin($v_login,$idot);
             if (!$fila == null) {
 
                 foreach ($fila as $value) {
@@ -168,12 +168,12 @@ class CdetalleOt extends CI_Controller {
 
     
     
-    public function listarDetalleOt() {
+    public function listarDetalleOt($idot=null) {
         $v_login=$this->session->userdata('usuario');
         $perfil=$this->session->userdata('perfil');
         
        if($perfil=="ADMINISTRADOR"){
-        $fila = $this->Model_DetalleOt->listarDetalleOt();
+        $fila = $this->Model_DetalleOt->listarDetalleOt($idot);
 
         foreach ($fila as $value) {
             
@@ -187,7 +187,7 @@ class CdetalleOt extends CI_Controller {
        
            if ($perfil=="TECNICO") {
 //           
-            $fila = $this->Model_DetalleOt->listarDetalleOtLogin($v_login);
+            $fila = $this->Model_DetalleOt->listarDetalleOtLogin($v_login,$idot);
             if (!$fila == null) {
 
                 foreach ($fila as $value) {
@@ -315,6 +315,10 @@ class CdetalleOt extends CI_Controller {
         }
     
 
+    }
+    
+    public function functionName($param) {
+        
     }
 
 }
