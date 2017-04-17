@@ -25,7 +25,7 @@ class Model_DetalleOt extends CI_Model {
         if($idot==null){
         $query = $this->db->query(" select * from vdetalleot ");
         return $query->result();
-        }else{
+        }elseif ($idot != null){
             $query = $this->db->query(" select * from vdetalleot where id_ot=$idot");
             return $query->result();
         }
@@ -41,7 +41,7 @@ class Model_DetalleOt extends CI_Model {
         $id = $query->row_array();
 
         $id_profesional = $id['id_pro'];
-        if ($idot = null) {
+        if ($idot == null) {
             $query = $this->db->query(" select * from vagendaprofesional where vagendaprofesional.id_pro=$id_profesional");
             return $query->result();
         } elseif ($idot != null) {
@@ -59,7 +59,7 @@ class Model_DetalleOt extends CI_Model {
         $id = $query->row_array();
 
         $id_profesional = $id['id_pro'];
-        if ($idot == null) {
+        if ($idot==null) {
             $query = $this->db->query("SELECT vdetalleot.* FROM  vdetalleot 
         INNER JOIN agenda ON vdetalleot.id_ot = agenda.id_ot
         WHERE agenda.id_pro=$id_profesional");
