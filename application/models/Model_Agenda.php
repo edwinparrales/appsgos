@@ -64,5 +64,11 @@ class Model_Agenda extends CI_Model {
         return $query->result();
           
       }
+      
+      public function getOrdenTrabajo($id_ot) {
+        $query = $this->db->query("CALL sp001_cursorot($id_ot)");
+
+        return $query->result();
+    }
 
 }

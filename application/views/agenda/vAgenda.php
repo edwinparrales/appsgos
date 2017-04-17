@@ -56,7 +56,7 @@
     </section>
 
     <!-- Modal Agendar profesional -->
-    <div id="modalregistro" class="modal fade" role="dialog">
+    <div id="modalregistro" class="modal fade" name="modalregistro" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -66,13 +66,11 @@
                     <h4 class="modal-title">Registro Agenda Profesionales</h4>
                 </div>
                 <div class="modal-body">
-                   
-                   
-
-                    <form method="POST" action="" class="form-group" id="frmagendapro" >
+                
+                      <form  id="frmagendapro" >
                      
-                            <form id="frmagendapro">
-                             <div class="warning" id="msjp" style=" font-weight:bold"></div>
+                      
+                             <div class="warning" id="msjmodalagendar" name="msjmodalagendar" style=" font-weight:bold"></div>
                                <div class="form-group">
                                     <label> Codigo Orden de trabajo</label>
                                     <div>
@@ -82,7 +80,7 @@
                             <div class="form-group">
                                 <label> Profesional</label>
                                 <div>
-                                    <select id="selectpro" class="select2-chosen" name="selectpro"></select>
+                                    <select id="selectpro" class="form-inline" name="selectpro"></select>
                                 </div>
                                 
 
@@ -104,7 +102,7 @@
                                         
                             </div>
 
-                        </form>
+                        
                    </form>
 
                 </div>
@@ -198,20 +196,7 @@
    
     $(document).ready(function () {
         mostrardatos();
-        $('.modal').on('hidden.bs.modal', function(){ 
-		
-	
-                  $("#msjp").html(" ");
-                  $("#msjp").css("background-color", false);
-                   $("#msjx").html(" ");
-                  $("#msjx").css("background-color", false);
-                  $("#frmagendapro").reset();
-                   $("#frmupdate").reset();
-                   $("#selectpro").reset()
-	});
-        
-     
-    
+
       $("body").on("click", "#regagenda a", function (event) {
            event.preventDefault();
             //vcodigo = $(this).attr("href");
@@ -253,7 +238,11 @@
         });
         
         //****************************************************************************
+  
       
+        
+
+    
     });
 
 
@@ -518,29 +507,21 @@
     //modal para relacionar orden  de trabajo con profesional
 function guardar(){
 event.preventDefault();
-
         $.ajax({
             url: "<?php echo base_url('Cagenda/guardar') ?>",
             type: "post",
             data: $("#frmagendapro").serialize(),
             success: function (respuesta) {
-
-
-                $("#msjp").html(respuesta);
-                $("#msjp").css("background-color", "#D1A6AC");
-
-                if (respuesta == "Registro Guardado") {
-                    jQuery.fn.reset = function () {
+                 if (respuesta == "Registro Guardado") {
+                      $("#msjmodalagendar").css("background-color", "#82E0AA");
+                      $("#msjmodalagendar").html(respuesta);
+                        jQuery.fn.reset = function () {
                         $(this).each(function () {
                             this.reset();
                         });
                     };
-
-
-                    $("#frmagendapro").reset();
-                    $("#msjp").css("background-color", "#82E0AA");
-
-
+                    ("#frmagendapro").reset();
+                   
                 }
 
             }
@@ -579,8 +560,6 @@ event.preventDefault();
                  alert(" El campo numero de orden no puede estar vacio ");
                }
 
-    
-    
  }
 
 </script>

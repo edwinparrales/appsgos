@@ -9,9 +9,9 @@
             </ul>
 
             <div class="tab-content">
-                <div class="tab-pane active" id="tab1">
+                <div class="tab-pane active" id="tab1"><br>
                     <div class="row">
-                        <div class="col-lg-6 col-md-offset-1">
+                        <div class="col-lg-6 col-md-offset-2">
                             <div class="panel panel-info">
                                 <div class="panel-heading">Registrar Relacion Equipo - Orden de trabajo</div>
                                 <div class="panel-body" >
@@ -41,29 +41,18 @@
                                         </div>
 
                                     </form>
-
-
-                                       
-
-
-                                </div>
-
-
+                                     
+                               </div>
                             </div>
                         </div>
-                    
-
-
+                   
                     </div>
-
-
                 </div>
 
-
-                <div class="tab-pane " id="tab2">
+               <div class="tab-pane " id="tab2">
                     <br>
                     <div class="form-group form-horizontal col-lg-4">
-                        <input required="true" class="form-control" name="txtbuscar" id="txtbuscar" placeholder="Ingrese numero de ot a buscar" type="number"><button id="btnbuscarzz" name="btnbuscarzz" class="btn btn-default">Buscar</button>
+                        <input required="true" class="form-control" name="txtbuscar" id="txtbuscar" placeholder="Ingrese numero de ot a buscar" type="number" min="0"><button id="btnbuscarzz" name="btnbuscarzz" class="btn btn-default">Buscar</button>
                         <button id="btnreset" name="btnreset" class="btn btn-default">Reset</button>
                     </div>
                     <br>
@@ -152,19 +141,9 @@
                                 <button class="btn btn-info" id="btnupdate">Guardar</button>
                             </div>
 
-
-
-
                         </form>
 
-                       
-
-
-
-                        <div class="panel-body" >
-
-
-
+                      <div class="panel-body" >
 
                         </div>
                     </div>
@@ -173,9 +152,6 @@
             </div>
         </div>
     </div>
-
-
-
 
 
 </div>
@@ -230,15 +206,6 @@
         });
         
         //****************************************************************************
-        
-        
-        
-        
-        
-        
-        
-        
-
 
     });
     
@@ -593,7 +560,7 @@ function guardar() {
     
     
     
-    //seleccio dependiente segun la ot
+    //seleccio dependiente segun la ot ventana modal
     
         function selectEqOt2(idot) {
         $("#eq2").select2({

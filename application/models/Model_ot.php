@@ -70,5 +70,7 @@ class Model_ot extends CI_Model {
             return null;
         }
     }
+    
+    //metodo para cambiar de estado la ot
 
 }

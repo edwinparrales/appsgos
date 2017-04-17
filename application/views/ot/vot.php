@@ -1,291 +1,311 @@
-<div class="container">
-    <ul class="nav nav-tabs success">
-        <li class="active "><a id="tab-consultar" href="#tab1" data-toggle="tab"  style="color: #1B2631">Registrar Orden de Trabajo</a></li>
-        <li><a href="#tab2" data-toggle="tab" style="color: #1B2631">Consultar Orden de Trabajo</a></li>
-
-    </ul>
-
-    <div class="tab-content">
-        <div class="tab-pane active" id="tab1">
+<div class="container-fluid">
 
 
-            <div class="col-lg-8 col-lg-offset-2">
-                <br>
-                <div class="panel panel-info">
-                    <div class="panel-heading"><h3 class="panel-title">Registro de orden de trabajo</h3></div>
-                    <div class="panel-body" >
-                        <h3 class="panel-title">Datos de la orden</h3><hr>
-                        <form method="POST"  id="frmregistrar">
-                            <div class="warning" id="msj" style=" font-weight:bold"></div>                   
+    <div class="row">
+        <ul class="nav nav-tabs success">
+            <li class="active "><a id="tab-consultar" href="#tab1" data-toggle="tab"  style="color: #1B2631">Consultar Orden de trabajo</a></li>
+            <li><a href="#tab2" data-toggle="tab">Registrar orden de trabajo</a></li>
 
+        </ul>
 
-
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="container-fluid">
+                    <br>
+                    <div class="row">
+                        <div class="  col-lg-4 col-lg-offset-2 form-horizontal">
                             <div class="form-group">
-                                <label for="cliente">Cliente:</label>
-                                <select class="js-example-basic-single form-control" name="id_cliente" id="id_cliente">
-                                    <option></option>
-                                </select>
+                                <input required="true" class="form-inline  col-lg-4 col-lg-offset-1" name="txtbuscar" id="txtbuscar" placeholder="Ingrese numero de ot a buscar" type="number" style="background: lemonchiffon">
+                                <button id="btnbuscarzz" name="btnbuscarzz" class=" form-inline btn  btn-sm  col-lg-offset-1">Buscar</button>
+                                <button id="btnreset" name="btnreset" class=" form-inline col-lg-offset-1 btn btn-sm">Reset</button>
 
                             </div>
-                            <div class="form-group">
-                                <label for="Solicitud">Solicitud:</label>
-                                <textarea class="form-control" id="solicitud" name="solicitud" placeholder="Solicitud"></textarea>                                   
-                            </div>
-                            <div class="form-group">
-                                <input type="text" value="<?php echo $this->session->userdata('usuario'); ?>" id="usuario" name="usuario" hidden="true">
-                            </div>
+
+                        </div> 
+                    </div>
+                    <br>
+                    <div class="row col-lg-10 col-lg-offset-1 " id="datatable">
+
+                        <table id="example" class="table table-bordered" cellspacing="0" width="100%">
+
+                            <thead class="text-capitalize">
+                            <th>Codigo   </th>
+                            <th>Fecha    </th>
+                            <th>Cliente  </th>
+                            <th>Solicitud    </th>
+                            <th>Estado orden   </th>
+                            <th>Fecha entrega   </th>
+                            <th>Usuario     </th>
+                            <th>Codigo Cliente    </th>
+                            <th>Operaciones      </th>
 
 
-                            <div class="form-group">
-                                <button id="btnguardar" type="submit" class="btn btn-default btn-primary">Registrar</button>
-                            </div>
+                            </thead>
 
 
-
-
-                        </form>
-
+                        </table>
 
 
                     </div>
+
+
+
+
+
                 </div>
+
 
             </div>
-        </div><!--final del tab1-->
 
 
+            <div class="tab-pane " id="tab2">
 
+                <div class="col-lg-12" id="listar"><br>
 
-
-
-
-            <div class="tab-pane" id="tab2"><!-- Inicio del tab2-->
-                <br>
-                <div class="form-group form-horizontal col-lg-4">
-                    <input required="true" class="form-control" name="txtbuscar" id="txtbuscar" placeholder="Ingrese numero de ot a buscar" type="number"><button id="btnbuscarzz" name="btnbuscarzz" class="btn btn-default">Buscar</button>
-                    <button id="btnreset" name="btnreset" class="btn btn-default">Reset</button>
-                </div>
-                <br><br>
-                <div class="container" id="datatable">
-
-                    <table id="example" class="table table-bordered" cellspacing="0" width="100%">
-
-                        <thead class="text-capitalize">
-                        <th>Codigo   </th>
-                        <th>Fecha    </th>
-                        <th>Cliente  </th>
-                        <th>Solicitud    </th>
-                        <th>Estado orden   </th>
-                        <th>Fecha entrega   </th>
-                        <th>Usuario     </th>
-                        <th>Codigo Cliente    </th>
-                        <th>Operaciones      </th>
-
-
-                        </thead>
-
-
-                    </table>
-
-
-                </div>
-
-            </div><!--final del tab2-->
-
-
-
-        </div><!--final del tab-->
-    
-
-        <!--            ventana modal editar orden de trabajo-->
-
-        <div id="modalupdate" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content" >
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Editar Orden de trabajo</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="panel panel-success">
-                            <div class="panel-heading"><h3 class="panel-title">Modificar Orden de Trabajo</h3></div>
-
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <br>
+                        <div class="panel panel-info">
+                            <div class="panel-heading"><h3 class="panel-title">Registro de orden de trabajo</h3></div>
                             <div class="panel-body" >
+                                <h3 class="panel-title">Datos de la orden</h3><hr>
+                                <form method="POST"  id="frmregistrar">
+                                    <div class="warning" id="msj" style=" font-weight:bold"></div>                   
 
-                                <form method="POST" action="" id="frmupdate">
-
-                                    <div class="warning" id="msj" style=" font-weight:bold"></div> 
-
-                                    <div class="form-group">
-                                        <label>Codigo:</label>
-                                        <input class="form-control" id="xcodigo" name="xcodigo" readonly="true">
-                                    </div>
 
 
                                     <div class="form-group">
-                                        <div class="form-group">
-                                            <label for="cliente">Cliente:</label>
-                                            <input class="form-control" id="xcliente1" name="xcliente1" readonly="true" placeholder="Cliente actual">
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="select2-chosen" name="xid_cliente" id="xid_cliente"></select>
-                                        </div>
-                                    </div>
+                                        <label for="cliente">Cliente:</label>
+                                        <select class=" form-horizontal" name="select01cliente" id="select01cliente">
+                                            <option></option>
+                                        </select>
 
+                                    </div>
                                     <div class="form-group">
                                         <label for="Solicitud">Solicitud:</label>
-                                        <textarea class="form-control" id="xsolicitud" name="xsolicitud" placeholder="Solicitud"></textarea>    
+                                        <textarea class="form-control" id="solicitud" name="solicitud" placeholder="Solicitud"></textarea>                                   
                                     </div>
                                     <div class="form-group">
-                                        <div class="form-group">
-                                            <label>Estado Orden:</label>
-                                            <input class="form-control" id="xestado1" name="xestado1" readonly="true">
-                                        </div>
-                                        <div>
-                                            <input class="select2-choices" id="xestado" type="text" name="xestado">
-                                        </div>
+                                        <input type="text" value="<?php echo $this->session->userdata('usuario'); ?>" id="usuario" name="usuario" hidden="true">
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Usuario:</label>
-                                        <input class="form-control" id="xusuario" type="text" name="xusuario">
-                                    </div>
 
                                     <div class="form-group">
-                                        <label for="Solicitud">Fecha Entrega:</label>
-                                        <input class="form-control" type="date" id="xfecha_entrega" name="xfecha_entrega">
+                                        <button id="btnguardar" type="submit" class="btn btn-default btn-primary">Registrar</button>
                                     </div>
 
-                                    <div class="form-group">
-                                        <button id="btnupdate" type="submit" class="btn btn-success">Actualizar</button>
-                                    </div>
+
+
+
                                 </form>
 
+
+
                             </div>
                         </div>
 
                     </div>
+
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!--            ventana modal editar orden de trabajo-->
+
+    <div id="modalupdate" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar Orden de trabajo</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel panel-success">
+                        <div class="panel-heading"><h3 class="panel-title">Modificar Orden de Trabajo</h3></div>
+
+                        <div class="panel-body" >
+
+                            <form method="POST" action="" id="frmupdate">
+
+                                <div class="warning" id="msj" style=" font-weight:bold"></div> 
+
+                                <div class="form-group">
+                                    <label>Codigo:</label>
+                                    <input class="form-control" id="xcodigo" name="xcodigo" readonly="true">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="cliente">Cliente:</label>
+                                        <input class="form-control" id="xcliente1" name="xcliente1" readonly="true" placeholder="Cliente actual">
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="select2-chosen" name="xid_cliente" id="xid_cliente"></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Solicitud">Solicitud:</label>
+                                    <textarea class="form-control" id="xsolicitud" name="xsolicitud" placeholder="Solicitud"></textarea>    
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label>Estado Orden:</label>
+                                        <input class="form-control" id="xestado1" name="xestado1" readonly="true">
+                                    </div>
+                                    <div>
+                                        <input class="select2-choices" id="xestado" type="text" name="xestado">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Usuario:</label>
+                                    <input class="form-control" id="xusuario" type="text" name="xusuario">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Solicitud">Fecha Entrega:</label>
+                                    <input class="form-control" type="date" id="xfecha_entrega" name="xfecha_entrega">
+                                </div>
+
+                                <div class="form-group">
+                                    <button id="btnupdate" type="submit" class="btn btn-success">Actualizar</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
 
-        <!--ventana modal relacionar equipos cliente-->
+    <!--ventana modal relacionar equipos cliente-->
 
 
-        <div id="modalequipo" class="modal fade" role="dialog">
-            <div class="modal-dialog">
+    <div id="modalequipo" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content" >
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Relacionar Orden Equipo Cliente</h4>
+            <!-- Modal content-->
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Relacionar Orden Equipo Cliente</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input class="form-control" id="infocliente" name="infocliente">
+
                     </div>
-                    <div class="modal-body">
+
+                    <form class="" id="frmmodaleqcliente">
+                        <div class="warning" id="msjx" style=" font-weight:bold"></div>
+                        <input  id="estadoOt" name="estadoOt" type="hidden">
+
                         <div class="form-group">
-                            <input class="form-control" id="infocliente" name="infocliente">
+                            <label> Codigo Equipo Cliente</label>
+                            <div>
+                                <select id="eq" class="select2-chosen" name="eq"></select>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label> Codigo Orden de trabajo</label>
+                            <input class="form-control" id="ot" name="ot" readonly="true">
+                        </div>
+                        <div class="form-group">
+                            <label> Observaciones </label>
+                            <textarea class="form-control" id="obser" name="obser" placeholder=" Observaciones"></textarea>
+                        </div>
+                        <div>
+                            <button class="btn btn-info" id="btnguardar-eq">Guardar</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--ventana modal relacionar profesional-->
+
+
+    <div id="modalprof" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Agendar orden a profesional</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="frmagendapro">
+                        <input  id="estadoOtp" name="estadoOtp" type="hidden">
+                        <div class="warning" id="msjp" style=" font-weight:bold"></div>
+                        <div class="form-group">
+                            <label> Codigo Orden de trabajo</label>
+                            <input id="pot" name="pot"class="form-control" type="text" placeholder="Orden de trabajo">
+
+                        </div>
+                        <div class="form-group">
+                            <label> Profesional</label>
+                            <div>
+                                <select id="selectpro" class="form-inline" name="selectpro"></select>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label>Observaciones</label>
+                            <textarea placeholder="Observaciones" class="form-control" name="observaciones" id="observaciones"></textarea>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Priorida</label>
+                            <div >
+                                <select name="selectprioridad" id="selectprioridad" class="form-control"></select>
+                            </div>
+
+                        </div>
+                        <div>
+                            <button id="btnrprof" class="btn btn-info">Guardar</button>
 
                         </div>
 
-                        <form class="" id="frmmodaleqcliente">
-                            <div class="warning" id="msjx" style=" font-weight:bold"></div>
-                            <input  id="estadoOt" name="estadoOt" type="hidden">
-
-                            <div class="form-group">
-                                <label> Codigo Equipo Cliente</label>
-                                <div>
-                                    <select id="eq" class="select2-chosen" name="eq"></select>
-                                </div>
 
 
-                            </div>
-                            <div class="form-group">
-                                <label> Codigo Orden de trabajo</label>
-                                <input class="form-control" id="ot" name="ot" readonly="true">
-                            </div>
-                            <div class="form-group">
-                                <label> Observaciones </label>
-                                <textarea class="form-control" id="obser" name="obser" placeholder=" Observaciones"></textarea>
-                            </div>
-                            <div>
-                                <button class="btn btn-info" id="btnguardar-eq">Guardar</button>
-                            </div>
+                    </form>
 
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!--ventana modal relacionar profesional-->
-
-
-        <div id="modalprof" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content" >
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Agendar orden a profesional</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form id="frmagendapro">
-                            <input  id="estadoOtp" name="estadoOtp" type="hidden">
-                            <div class="warning" id="msjp" style=" font-weight:bold"></div>
-                            <div class="form-group">
-                                <label> Codigo Orden de trabajo</label>
-                                <input id="pot" name="pot"class="form-control" type="text" placeholder="Orden de trabajo">
-
-                            </div>
-                            <div class="form-group">
-                                <label> Profesional</label>
-                                <div>
-                                    <select id="selectpro" class="form-control" name="selectpro"></select>
-                                </div>
-
-
-                            </div>
-                            <div class="form-group">
-                                <label>Observaciones</label>
-                                <textarea placeholder="Observaciones" class="form-control" name="observaciones" id="observaciones"></textarea>
-
-                            </div>
-                            <div class="form-group">
-                                <label>Priorida</label>
-                                <div >
-                                    <select name="selectprioridad" id="selectprioridad" class="form-control"></select>
-                                </div>
-
-                            </div>
-                            <div>
-                                <button id="btnrprof" class="btn btn-info">Guardar</button>
-
-                            </div>
-
-
-
-                        </form>
-
-
-                    </div>
 
                 </div>
+
             </div>
         </div>
-    </div>  
+    </div>
 </div>
+
 
 
 <script type="text/javascript">
 
     $(document).ready(function () {
         mostrardatos();
-        $('.modal').on('hidden.bs.modal', function () {
+        $('.modal fade').on('hidden.bs.modal', function () {
             $("#frmagendapro").reset();
              
             $("#msjx").html(" ");
@@ -563,12 +583,12 @@
     $(document).ready(function () {
 
 
-        $(".js-example-basic-single").select2({
+        $("#select01cliente").select2({
             id: function (data) {
                 return data.num_cedula;
             },
             allowClear: true,
-            placeholder: "Digite numero de cedula.",
+            placeholder: "..............Digite numero de cedula.................",
             ajax: {
                 url: "http://localhost/demosots/cot/listcmbClient",
                 dataType: 'json',
@@ -686,7 +706,7 @@
                 return data.num_cedula;
             },
             allowClear: true,
-            placeholder: "Digite numero de cedula o apellido.",
+            placeholder: "........Digite numero de cedula o apellido.....",
             ajax: {
                 url: "http://localhost/demosots/Profesionales/listar2",
                 dataType: 'json',

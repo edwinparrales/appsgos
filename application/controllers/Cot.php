@@ -38,7 +38,7 @@ class Cot extends CI_Controller {
 
         if ($this->input->is_ajax_request()) {
 
-            $this->form_validation->set_rules('id_cliente', 'Codigo Cliente', 'required');
+            $this->form_validation->set_rules('select01cliente', 'Codigo Cliente', 'required');
             $this->form_validation->set_rules('solicitud', 'Solicitud', 'required');
            
 
@@ -55,7 +55,7 @@ class Cot extends CI_Controller {
                 echo $error;
             } else {
                 $datos = $this->input->post();
-                $v_idclie = $datos['id_cliente'];
+                $v_idclie = $datos['select01cliente'];
                 $v_solicitud = $datos['solicitud'];
                 $v_estado="REGISTRADO";
                 $v_usuario=$datos['usuario'];
@@ -94,8 +94,8 @@ class Cot extends CI_Controller {
 
     public function eliminar() {
         if ($this->input->is_ajax_request()) {
-            $idsele = $this->input->post("id");
-            $id=intval(preg_replace('/[^0-9]+/', '', $idsele), 10);
+            $id = $this->input->post("id");
+           
             if ($this->Model_ot->eliminar($id) == true)
                 echo "Registro Eliminado";
             else

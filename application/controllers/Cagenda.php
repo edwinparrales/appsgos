@@ -9,6 +9,7 @@ class Cagenda extends CI_Controller {
         $this->load->helper('url');
 
         $this->load->model('Model_Agenda');
+         $this->load->model('Model_ot');
        
         if (!$this->session->userdata('conectado')) {
             redirect(base_url());
@@ -34,20 +35,14 @@ class Cagenda extends CI_Controller {
         $this->load->view('plantilla/plantilla1', $data);
     }
 
- public function guardar() {
+    public function guardar() {
+
+
 
         if ($this->input->is_ajax_request()) {
-
             $this->form_validation->set_rules('pot', 'Orden de trabajo', 'required');
             $this->form_validation->set_rules('selectpro', 'Profesional', 'required');
             $this->form_validation->set_rules('selectprioridad', 'Prioridad', 'required');
-            
-            
-           
-            //mensajes de validacion
-            $this->form_validation->set_message('is_unique', 'El nombre de %s ya existe en la base de datos');
-
-       
 
             if ($this->form_validation->run() == false) {
                 $error = json_encode(validation_errors());
@@ -56,52 +51,36 @@ class Cagenda extends CI_Controller {
                 echo $error;
             } else {
                 $obj = $this->input->post();
-                
-                $datos = array(
-                    "id_ot" => intval(preg_replace('/[^0-9]+/', '', $obj['pot']), 10),
-                    "id_pro"=>$obj['selectpro'],
-                    "observaciones"=>$obj['observaciones'],
-                    "estado_act"=>"ABIERTO",
-                    "prioridad"=>$obj['selectprioridad']
-                );
               
-                
-                    //metodo para validar el estado de la ot nota : se reutila el metodo del ot-equipos
-                       $this->load->model("Model_OtEquipoCliente");
 
-                     $fila = $this->Model_OtEquipoCliente->selectOt($obj['pot']);
+                $datos = array(
+                    "id_ot" => $obj['pot'],
+                    "id_pro" => $obj['selectpro'],
+                    "observaciones" => $obj['observaciones'],
+                    "estado_act" => "ABIERTO",
+                    "prioridad" => $obj['selectprioridad']
+                );
+                
 
-                     foreach ($fila as $value) {
-
-                       $result[]=$value->estado_proce;
-                      }
-                
-                
-                
-                if($result[0]!="FINALIZADO"){
-                
-                if ($this->Model_Agenda->guardar($datos) == true) {
-                     $this->load->model('Model_Ot');
-                     $dat=array(
-                         "estado_proce"=>"PROCESO"
-                     );
-                     $this->Model_Ot->actualizar($datos['id_ot'],$dat);
-                    
-                    echo "Registro Guardado";
-                } else {
-                    echo "El registro no fue guardado";
+                $oper = $this->preGuardar($datos);
+                 if ($oper) {
+                    $dataModelOt = array('estado_proce' => "PROCESO");
+                    $this->Model_ot->actualizar($datos['id_ot'], $dataModelOt);
                 }
-                }else{
-                    echo "La orden no puede estar en estado FINALIZADO modifique su estado";
-                    
-                }
-                
-                
-            }
+
+              
+            }  
+            
+            
+            
+            
         } else {
 
             show_404();
         }
+        
+        
+    
     }
 
     public function listar() {
@@ -135,13 +114,6 @@ class Cagenda extends CI_Controller {
             $this->form_validation->set_rules('potx', 'Orden de trabajo', 'required');
             $this->form_validation->set_rules('selectprox', 'Profesional', 'required');
             $this->form_validation->set_rules('selectprioridadx', 'Prioridad', 'required');
-            
-            
-           
-            //mensajes de validacion
-            $this->form_validation->set_message('is_unique', 'El nombre de %s ya existe en la base de datos');
-
-       
 
             if ($this->form_validation->run() == false) {
                 $error = json_encode(validation_errors());
@@ -152,18 +124,14 @@ class Cagenda extends CI_Controller {
                 $obj = $this->input->post();
                 $id=$this->input->post('idagenda');
                 $datos = array(
-                    "id_ot" => intval(preg_replace('/[^0-9]+/', '', $obj['potx']), 10),
+                    "id_ot" =>$obj['potx'],
                     "id_pro"=>$obj['selectprox'],
                     "observaciones"=>$obj['observacionesx'],
                     "estado_act"=>$obj['estAgenda'],
                     "prioridad"=>$obj['selectprioridadx']
                 );
+                
                 if ($this->Model_Agenda->actualizar($id,$datos) == true) {
-                     $this->load->model('Model_Ot');
-                     $dat=array(
-                         "estado_proce"=>"PROCESO"
-                     );
-                     $this->Model_Ot->actualizar($datos['id_ot'],$dat);
                     
                     echo "Registro Actualizado";
                 } else {
@@ -194,6 +162,47 @@ class Cagenda extends CI_Controller {
         } else {
             echo 'La busqueda no tiene resultados verifique los datos';
         }
+    }
+    
+    
+    
+    
+    public function preGuardar($datos) {
+          $ind=false;
+          $est=$this->getEstadoOt($datos['id_ot']);
+          $val="REGISTRADO";
+         
+        if($est===$val){
+         
+           $ind=$this->Model_Agenda->guardar($datos);
+        }
+        if ( $ind == true) {
+            echo "Registro Guardado";
+            return true;
+                       
+        } else {
+            echo "El registro no fue guardado se encuentra en estado $est y debe estar en REGISTRADO";
+        }
+        
+      
+        
+           
+    }
+    
+    public function getEstadoOt($idot=null) {
+
+        $filaOt = $this->Model_Agenda->getOrdenTrabajo($idot);
+
+        foreach ($filaOt as $value) {
+
+            $json[] = $value;
+        }
+
+        foreach ($json as $value1) {
+            $estado = $value1->estado_proce;
+        }
+      
+        return $estado;
     }
 
 }
