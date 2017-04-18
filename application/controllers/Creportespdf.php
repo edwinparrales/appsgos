@@ -122,75 +122,117 @@ class Creportespdf extends CI_Controller {
                 $i++;
             }
         }
+         //load mPDF library
+        $this->load->library('M_pdf');
+        $mpdf = new mPDF('c', 'A4');
+        $mpdf->SetHTMLHeader('<img src="http://localhost/demosots/public/img/logofor.jpg"/>');
+        $mpdf->WriteHTML("<br><br><br><br><br><br><br>");
+        $mpdf->WriteHTML("Fecha:".  date("d-m-Y (H:i:s)",  time())."<br>");
+        
+        $mpdf->WriteHTML("<h5>Orden No: ".$datos[0]['ot']."</h5>");
+        
+        $mpdf->WriteHTML("Cliente:".$datos[0]['nombre_cliente']."<br><br><br>");
 
+        $mpdf->SetStyles('<link rel="stylesheet" href="http://localhost/demosots/public/css/bootstrap.css" ');
+        
+         $mpdf->WriteHTML("<h3 ALIGN='center'>COMPROBANTE DE ORDEN SERVICIO</h3><br><br>");
+        
+        
+         $html = 
+   
+        "  <!DOCTYPE html>
+           <html>
+           <head>
+          
+           </head>
+           <body>
+            <h5>* DATOS DE LA ORDEN DE SERVICIO</h5>
+            
+            <br><br>
+            <table border='1' align='center'>
+            
+            <tr>
+            <th>NOMBRE CLIENTE</th>
+            <th>DNI</th>
+            <th>EMAIL</th>
+            <th>SOLICITUD</th>
+            <th>OBSERVACIONES</th>
+            </tr>";
+        $mpdf->WriteHTML($html);
+   
+        foreach ($ot as $value) {
+            $mpdf->WriteHTML("<tr>");
+          
+            $mpdf->WriteHTML("<td>$value->nombre</td>");
+            $mpdf->WriteHTML("<td>$value->dni</td>");
+            $mpdf->WriteHTML("<td>$value->email</td>");
+            $mpdf->WriteHTML("<td>$value->solicitud</td>");
+             $mpdf->WriteHTML("<td>$value->observaciones</td>");
 
-
-
-        $pdf = new FPDF('P', 'mm', 'A4');
-        $pdf->SetFont('Arial', 'B', '16');
-        $pdf->AddPage();
-         
-        $pdf->Image('http://localhost/demosots/public/img/logofor.jpg');
-        $pdf->Ln(20);
-        $pdf->Header();
-        $pdf->SetFillColor(232, 232, 232);
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(40, 10, '', 0, 0, 'C', 0);
-        $pdf->Cell(100, 10, 'COMPROBANTE DE ORDEN SERVICIO', 0, 0, 'C', 0);
-        $pdf->SetFont('Arial', '', 9);
-        $pdf->Cell(50, 10, 'Fecha: ' . date("Y-m-d H:i:s"), 0);
-        $pdf->Ln(20);
-        $pdf->Cell(150, 10, '', 0, 0, 'C', 0);
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(150, 10, 'Orden No: ' . $datos[0]['ot'] . '', 0);
-        $pdf->Ln(20);
-        //Fin del encabezado
-        $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(40, 10, '', 0, 0, 'C', 0);
-        $pdf->Cell(100, 10, '**************DATOS DE LA ORDEN DE SERVICIO**************', 0, 0, 'C', 0);
-        $pdf->Ln(10);
-        if ($ot != null) {
-            $pdf->SetFont('Arial', '', 9);
-
-            $pdf->Cell(85, 10, 'Nombre cliente:  ' . $datos[0]['nombre_cliente'], 0, 0, 'L', 0);
-            $pdf->Cell(50, 10, 'Dni:  ' . $datos[0]['dni'], 0, 0, 'L', 0);
-            $pdf->Cell(50, 10, 'Email:  ' . $datos[0]['email'], 0, 0, 'L', 0);
-            $pdf->Ln();
-
-            $pdf->Cell(140, 20, 'Solicitud:' . utf8_decode($datos[0]['solicitud']), 2, 'L', 0, 0);
-            $pdf->Ln();
-            $pdf->Cell(100, 20, 'Observaciones:  ' . utf8_decode($datos[0]['obs_ot']), 0, 0, 'C', 0);
-            $pdf->Ln();
-        } else {
-            $pdf->Cell(100, 10, 'No se encontraron registros con los datos ingresados', 0, 0, 'C', 0);
+            $mpdf->WriteHTML("</tr>");
         }
-        $pdf->Ln();
-        $pdf->Cell(40, 10, '', 0, 0, 'C', 0);
-        $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(100, 10, utf8_decode('*******INFORMACIÓN EQUIPOS DEL CLIENTE*********'), 0, 0, 'C', 0);
-        $pdf->Ln(10);
-        $pdf->SetFont('Arial', '', 9);
-        if ($ot != null) {
-            foreach ($ot as $value) {
-//            echo "Cliente :" . $value->cliente. "<br>";
-                $pdf->Cell(100, 10, 'Nombre Equipo: ' . $value->nom_dispositivo, 0, 0, 'C', 0);
-                $pdf->Cell(100, 10, 'Serial: ' . $value->serial, 0, 0, 'C', 0);
-                $pdf->Ln();
-                $pdf->Cell(100, 10, 'Modelo: ' . $value->modelo, 0, 0, 'C', 0);
-                $pdf->Cell(100, 10, 'Placa: ' . $value->placa, 0, 0, 'C', 0);
-            }
-        } else {
-            $pdf->Cell(100, 10, '****No se encontraron registros con los datos ingresados****', 0, 0, 'C', 0);
+        
+
+$mpdf->WriteHTML("</table><br><br>");
+
+
+ $mpdf->WriteHTML("<h5>* INFORMACION EQUIPOS DEL CLIENTE</h5><br>");
+
+
+   $mpdf->WriteHTML("<table border='1' align='center'>
+            
+            <tr>
+            <th>NOMBRE EQUIPO</th>
+            <th>SERIAL</th>
+            <th>MODELO</th>
+            <th>PLACA</th>
+            <th>OBSERVACIONES</th>
+       
+            </tr>");
+     foreach ($ot as $value) {
+            $mpdf->WriteHTML("<tr>");
+          
+            $mpdf->WriteHTML("<td>$value->nom_dispositivo</td>");
+            $mpdf->WriteHTML("<td>$value->serial</td>");
+            $mpdf->WriteHTML("<td>$value->modelo</td>");
+            $mpdf->WriteHTML("<td>$value->placa</td>");
+             $mpdf->WriteHTML("<td>$value->Observaciones</td>");
+
+            $mpdf->WriteHTML("</tr>");
         }
+        $mpdf->WriteHTML("</table>");
+        
+        
+      $mpdf->SetHTMLFooter("<br><footer>Firma:______________________________________ </footer>");
+        
 
 
-        //pie  de pagina
-        $pdf->Footer();
-        $pdf->SetY(260);
-        $pdf->SetFont('Arial', 'I', 8);
-        $pdf->Cell(0, 10, 'Pagina ' . $pdf->PageNo(), 0, 0, 'C');
+$mpdf->WriteHTML("</body></html>");
 
-        $pdf->Output();
+
+        // $html = $this->load->view('v_dpdf',$date,true);
+        //$html="asdf";
+        //this the the PDF filename that user will get to download
+     
+
+  
+        $mpdf->Output();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     }
 
     public function volanteCostoOt() {
@@ -267,7 +309,7 @@ class Creportespdf extends CI_Controller {
             <th>CODIGO</th>
             <th>INFORMACION SERVICIOS</th>
             <th>OBSERVACIONES</th>
-            <th>VALOR UNIDAD SERVICIO</th>
+            <th>VALOR UNIDAD SERVICIO</th>  
             </tr>
             </thead>";
         $mpdf->WriteHTML($html);
@@ -289,7 +331,7 @@ class Creportespdf extends CI_Controller {
 
 $mpdf->WriteHTML("</table>");
         
-$mpdf->WriteHTML("***********************************************************Total Servicios:$".$datos[0]['Valor_Total_Servicios'] );
+$mpdf->WriteHTML("<h4  type='number'>***********************************************************Total Servicios:$".$datos[0]['Valor_Total_Servicios']."</h4>" );
 
 
 $mpdf->WriteHTML("<br><br>DETALLE DE DISPOSITIVOS<br>");
@@ -325,11 +367,12 @@ $mpdf->WriteHTML("<br><br>DETALLE DE DISPOSITIVOS<br>");
  
 
  $mpdf->WriteHTML("</table>");
-  $mpdf->WriteHTML("<br>***********************************************************Total Dispositivos:$".$datos[0]['Valor_Total_Dispositivos'] );
+  $mpdf->WriteHTML("<br><h4>***********************************************************Total Dispositivos:$".$datos[0]['Valor_Total_Dispositivos']."</h4>" );
   $mpdf->WriteHTML("<br>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<br>");
  $mpdf->WriteHTML("Total:$".$datos[0]['Valor_Total']);
   $mpdf->WriteHTML("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<br>");
-$mpdf->WriteHTML("</body>");
+   $mpdf->SetHTMLFooter("<br><footer>Firma:______________________________________ </footer>");
+$mpdf->WriteHTML("</body></html>");
 
 
         // $html = $this->load->view('v_dpdf',$date,true);
