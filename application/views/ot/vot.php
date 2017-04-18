@@ -445,10 +445,10 @@
     function mostrardatos() {
         $("#example").dataTable().fnDestroy();
         $('#example').DataTable({
-//             fixedColumns: true,
-//             fixedHeader: true,
-            // dom: 'Bfrtip',
-            // buttons: ['csv', 'excel', 'pdf', 'print'],
+             fixedColumns: true,
+             fixedHeader: true,
+             dom: 'Bfrtip',
+             buttons: ['csv', 'excel', 'pdf', 'print'],
               "scrollY":        "300px",
               "scrollCollapse": true,
               "paging":         false,
@@ -821,8 +821,8 @@ event.preventDefault();
         $("#example").dataTable().fnDestroy();
 
         $('#example').DataTable({
-//             fixedColumns: true,
-//             fixedHeader: true,
+             fixedColumns: true,
+            fixedHeader: true,
              dom: 'Bfrtip',
              buttons: [
              'csv', 'excel', 'pdf', 'print'
@@ -902,6 +902,20 @@ event.preventDefault();
     });
 
 </script>
+</script>
+
+<!--<script src=" https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>-->
+<script src=" https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+<script src=" //cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
+<script src=" //cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">-->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
+<!--<script src=" //code.jquery.com/jquery-1.12.4.js"></script>-->
+
 
 
 
