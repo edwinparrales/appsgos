@@ -45,9 +45,9 @@ class Profesionales extends CI_Controller {
             $this->form_validation->set_rules('cedula', 'Cedula', 'required|numeric|is_unique[profesionales.num_cedula]');
             $this->form_validation->set_rules('direccion', 'Direccion', 'required');
             $this->form_validation->set_rules('telefono', 'Telefono', 'required|numeric');
-            $this->form_validation->set_rules('celular', 'Numero celular', 'required|numeric');
+            $this->form_validation->set_rules('celular', 'Numero Celular', 'numeric|required|exact_length[10]');
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-             $this->form_validation->set_rules('cargo', 'Cargo', 'required');
+            $this->form_validation->set_rules('cargo', 'Cargo', 'required');
 
 
             //mensajes de validacion
@@ -130,7 +130,7 @@ class Profesionales extends CI_Controller {
             $this->form_validation->set_rules('xcedula', 'Cedula', 'required|numeric');
             $this->form_validation->set_rules('xdireccion', 'Direccion', 'required');
             $this->form_validation->set_rules('xtelefono', 'Telefono', 'required|numeric');
-            $this->form_validation->set_rules('xcelular', 'Numero celular', 'required|numeric');
+            $this->form_validation->set_rules('xcelular', 'Numero Celular', 'numeric|required|exact_length[10]');
             $this->form_validation->set_rules('xemail', 'Email', 'required|valid_email');
              $this->form_validation->set_rules('xcargo', 'Cargo', 'required');
 

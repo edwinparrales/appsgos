@@ -27,7 +27,7 @@
                 <th>Codigo OT</th>
                 <th>Codigo Profesional</th>
                 <th>Observaciones</th>
-                <th>Estado</th>
+                <th>Estado actividad</th>
                 <th>Prioridad</th>
                 <th>Informacion OT</th>
                 <th>Informacion Profesional</th>
@@ -41,7 +41,7 @@
                 <th>Codigo OT</th>
                 <th>Codigo Profesional</th>
                 <th>Observaciones</th>
-                <th>Estado Agenda</th>
+                <th>Estado actividad</th>
                 <th>Prioridad</th>
                 <th>Informacion OT</th>
                 <th>Informacin Profesional</th>

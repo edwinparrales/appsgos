@@ -15,7 +15,7 @@
                         <div class="  col-lg-4 col-lg-offset-2 form-horizontal">
                             <div class="form-group">
                                 <input min="0" required="true" class="form-inline  col-lg-4 col-lg-offset-1" name="txtbuscar" id="txtbuscar" placeholder="Ingrese No OT" type="number" style="background: lemonchiffon">
-                                <button id="btnbuscarzz" name="btnbuscarzz" class=" form-inline btn  btn-sm  col-lg-offset-1">Buscar</button>
+                                <button id="btnbuscarzz" name="btnbuscarzz" class="btn  btn-sm  col-lg-offset-1">Buscar</button>
                                 <button id="btnreset" name="btnreset" class=" form-inline col-lg-offset-1 btn btn-sm">Reset</button>
 
                             </div>
@@ -68,23 +68,20 @@
                     <div class="row">
                         <div class="  col-lg-4 col-lg-offset-2 form-horizontal">
                             <div class="form-group">
-                                <input required="true" class="form-inline  col-lg-6 col-lg-offset-1" name="txtbuscar2" id="txtbuscar2" placeholder="Ingrese No OT" type="number"   min="0" style="background: #F0F5FF">
-                                <button id="btnbuscarzz2" name="btnbuscarzz2" class=" form-inline btn  btn-sm  col-lg-offset-1">Buscar</button>
-                                <button id="btnreset2" name="btnreset2" class=" form-inline col-lg-offset-1 btn btn-sm">Reset</button>
+                                <input required="true" class="form-inline  col-lg-4 col-lg-offset-1" name="txtbuscar2" id="txtbuscar2" placeholder="Ingrese No OT" type="number"   min="0" style="background: #F0F5FF">
+                                <button id="btnbuscarzz2" name="btnbuscarzz2" class="btn  btn-sm  col-lg-offset-1">Buscar</button>
+                                <button id="btnreset2" name="btnreset2" class=" col-lg-offset-1 btn btn-sm">Reset</button>
 
                             </div>
 
                         </div> 
-                    </div><br>
-                    
-                    
-                    
->
+                    </div>
+                   
                     <div class="row">
                         
 <!--                        TABLA DEL DETALLA DE LA ORDEN DE SERVICIO-->
 
-                     <div class="col-lg-12" id="listatbDetalleOt"><br>
+                     <div class="col-lg-12" id="listatbDetalleOt">
                         <table id="tbDetalleOt" class="table table-striped table-bordered" cellspacing="0" width="100%">
 
                             <thead class="text-capitalize">

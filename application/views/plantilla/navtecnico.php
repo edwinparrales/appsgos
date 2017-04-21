@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url("Inicio/index") ?>">Sgos</a>
+                <a class="navbar-brand" href="<?php echo base_url("Inicio/index") ?>"><span title="" class=" glyphicon glyphicon-home"></span>Sgos</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

@@ -356,6 +356,8 @@
                             success: function (respuesta) {
                                 if(respuesta=="exito"){
                                     swal("El registro fue eliminado","Aceptar","success");
+                                     mostrardatos();
+                                    
                                 }else{
                                     
                                     alert("Error !No se puede eliminar el registro¡");

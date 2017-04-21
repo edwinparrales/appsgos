@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url("Inicio/index") ?>">Sgos</a>
+                <a class="navbar-brand" href="<?php echo base_url("Inicio/index") ?>"><span title="" class=" glyphicon glyphicon-home"></span>Sgos</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -70,11 +70,11 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dispositivos y proveedores <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span title="Dispositivos y Proveedores" class=" glyphicon glyphicon-tags"></span>Dispositivos y proveedores <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo base_url("Cproveedor")?>">Proveedores</a></li>
-                            <li><a href="<?php echo base_url("Cdispositivo") ?>">Dispositivos</a></li>
-                            <li><a href="<?php echo base_url('Cmarcas')?>">Marcas</a></li>
+                            <li><a href="<?php echo base_url("Cproveedor")?>"><span title="Proveedores" class=" glyphicon glyphicon-tag"></span>Proveedores</a></li>
+                            <li><a href="<?php echo base_url("Cdispositivo") ?>"><span title="Dispositivos" class=" glyphicon glyphicon-tag"></span>Dispositivos</a></li>
+                            <li><a href="<?php echo base_url('Cmarcas')?>"><span title="Marcas" class=" glyphicon glyphicon-tag"></span>Marcas</a></li>
 
                         </ul>
                     </li>

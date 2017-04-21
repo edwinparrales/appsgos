@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/demosots/application/controllers/Login.php</file>
-            <file>file:/C:/xampp/htdocs/demosots/application/controllers/Creportespdf.php</file>
+            <file>file:/C:/xampp/htdocs/demosots/application/config/config.php</file>
+            <file>file:/C:/xampp/htdocs/demosots/application/views/sots/frmlogin.php</file>
+            <file>file:/C:/xampp/htdocs/demosots/application/views/plantilla/navtecnico.php</file>
+            <file>file:/C:/xampp/htdocs/demosots/application/views/sots/inicio.php</file>
             <file>file:/C:/xampp/htdocs/demosots/application/views/plantilla/navopera.php</file>
-            <file>file:/C:/xampp/htdocs/demosots/application/models/Model_ReportesPdf.php</file>
-            <file>file:/C:/xampp/htdocs/demosots/application/views/reportes/vreportes.php</file>
+            <file>file:/C:/xampp/htdocs/demosots/application/controllers/Cot.php</file>
             <file>file:/C:/xampp/htdocs/demosots/application/views/plantilla/nav.php</file>
         </group>
     </open-files>
