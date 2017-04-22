@@ -20,7 +20,7 @@ Edwin Parrales, Jefferson Alvarez, Jhom Payan
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/dist/sweetalert.css'); ?>">
         <script src="<?php echo base_url('public/dist/funciones.js'); ?>"></script>
    
-        <!--data tables-->
+        <!--data tables -->
         
         <?php echo link_tag(base_url() . 'public/media/css/dataTables.bootstrap.css'); ?> 
               
