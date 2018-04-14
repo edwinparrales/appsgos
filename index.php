@@ -1,6 +1,6 @@
 <?php
 /**
- * CodeIgniter
+ * CodeIgniter EDWIN PARRALES
  *
  * An open source application development framework for PHP
  *
